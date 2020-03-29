@@ -5,27 +5,16 @@
         <link rel="stylesheet" href="bootstrap.min-4.4.1.css">
         
         <script type = "text/javascript" language="javascript"> 
-        var month = ['' ,'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                
-        function parseDate(input, format) {
-            format = format || 'yyyy-mm-dd'; // default format
-            var parts = input.match(/(\d+)/g), 
-                i = 0, fmt = {};
-            // extract date-part indexes from the format
-            format.replace(/(yyyy|dd|mm)/g, function(part) { fmt[part] = i++; });
-            
-            console.log(fmt, parts);
-
-            return parts[fmt['dd']]+"/" +month[parts[fmt['mm']]]+ "/"+ parts[fmt['yyyy']];
-        }
             $.getJSON('https://pomber.github.io/covid19/timeseries.json', function(data) { 
-                // console.table(data.India);
+                console.table(data.India);
+                var month = ['' ,'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
                 var i ;
                 for(i = 1 ; i < data.India.length; i++){
-                    var d =  parseDate(data.India[i].date);
+                    var dt = data.India[i].date.split("-");
+                    var d =  new Date(dt[0], dt[1], dt[2]);
                     $('#data').prepend("<tr scope='row'>"+
                         "<td>"+( data.India.length - i )+"</td>"+
-                        "<td>"+( d )+"</td>"+
+                        "<td>"+( d.getDate() +" / "+ month[d.getMonth()] +" / "+ d.getFullYear() )+"</td>"+
                         "<td>"+( data.India[i].confirmed )+"</td>"+
                         "<td>"+( data.India[i].confirmed - data.India[i-1].confirmed )+"</td>"+
                         "<td>"+( data.India[i].deaths )+"</td>"+
