@@ -1,11 +1,12 @@
 <html>
     <head>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <base href="./">
+        <script src="jquery.min-3.3.1.js"></script>
+        <link rel="stylesheet" href="bootstrap.min-4.4.1.css">
         
         <script type = "text/javascript" language="javascript"> 
             $.getJSON('https://pomber.github.io/covid19/timeseries.json', function(data) { 
-                console.table(data.India);
+                // console.table(data.India);
                 var month = ['' ,'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
                 var i ;
                 for(i = 1 ; i < data.India.length; i++){
