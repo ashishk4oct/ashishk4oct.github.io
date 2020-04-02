@@ -10,12 +10,12 @@
                 var month = ['' ,'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
                 var i ;
                 for(i = 1 ; i < data.India.length; i++){
-                    console.log(data.India[i].date);
+                    // console.log(data.India[i].date);
                     var dt = data.India[i].date.split("-");
-                    console.log(dt);
-                    var d =  new Date(dt[0], dt[1], dt[2]);
-                    console.log(d);
-                    console.log("-------------------------------------------")
+                    // console.log(dt);
+                    // var d =  new Date(dt[0], dt[1], dt[2]);
+                    // console.log(d);
+                    // console.log("-------------------------------------------")
                     $('#data').prepend("<tr scope='row'>"+
                         "<td>"+( data.India.length - i )+"</td>"+
                         "<td>"+( dt[2] +" "+ month[dt[1]] +" "+ dt[0] )+"</td>"+
@@ -26,7 +26,7 @@
                     "</tr>")
                 }
                 
-                $('#data').prepend("<tr style='text-align: center;'>"+
+                $('#data').prepend("<tr>"+
                                 "<td>#</td>"+
                                 "<td>Date</td>"+
                                 "<td>Confirmed</td>"+
@@ -38,7 +38,7 @@
         </script>
     </head>
     <body>
-        <table id="data" class="table table-dark"  style='text-align: right;'>
+        <table id="data" class="table table-dark"  style='text-align: center;'>
             
         </table>
     </body>
